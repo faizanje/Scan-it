@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listRecordsFragment"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="List" />
+
+    <item
+        android:id="@+id/scanFragment"
+        android:title="" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Settings" />
+
+</menu>

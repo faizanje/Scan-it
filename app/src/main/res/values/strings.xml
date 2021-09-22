@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Scan It</string>
+    <string name="title_activity_bottom_nav">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="assignment_list">Assignment List</string>
+    <string name="attendance_list">Attendance List</string>
+</resources>
