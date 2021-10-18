@@ -39,4 +39,12 @@ public class RecordToExport {
         this.departureDateTime = departureDateTime;
     }
 
+    @Override
+    public String toString() {
+        return "RecordToExport{" +
+                "fullName='" + fullName + '\'' +
+                ", arrivalDateTime=" + arrivalDateTime +
+                ", departureDateTime=" + departureDateTime +
+                '}';
+    }
 }

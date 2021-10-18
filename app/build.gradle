@@ -54,6 +54,10 @@ dependencies {
     implementation 'io.github.pilgr:paperdb:2.7.1' /*Local database*/
     implementation 'com.budiyev.android:code-scanner:2.1.0' /*QR Scanner*/
     implementation 'com.airbnb.android:lottie:4.1.0' /*Animations*/
+    implementation 'net.sf.supercsv:super-csv:2.4.0'   /*Export to csv*/
+    implementation "com.anggrayudi:storage:0.13.0"   /*Storage */
+
+
 
 
 }

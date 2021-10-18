@@ -19,6 +19,8 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvExport"
+            android:drawableEnd="@drawable/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
