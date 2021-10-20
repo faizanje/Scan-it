@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textStyle="bold"
         android:text="1. Example Name"
         android:layout_weight="1.25"
