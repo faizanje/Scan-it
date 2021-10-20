@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".activities.BottomNavActivity">
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="10dp"
+        android:padding="8dp"
+        app:backgroundTint="@color/grey_300"
+        app:contentInsetStart="0dp"
+        app:elevation="0dp"
         app:fabAlignmentMode="center"
         app:fabAnimationMode="scale"
-        app:backgroundTint="@color/white"
-        app:contentInsetStart="0dp"
-        >
+        app:fabCradleMargin="0dp"
+        app:fabCradleRoundedCornerRadius="0dp"
+        app:fabCradleVerticalOffset="0dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@drawable/background_transparent"
-                android:id="@+id/nav_view"
+            app:itemIconSize="45dp"
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
+            android:background="@drawable/background_transparent"
+            app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -30,27 +39,52 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-
-    <fragment
-        android:layout_marginBottom="?actionBarSize"
-        android:id="@+id/nav_host_fragment_activity_bottom_nav"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation" />
+        android:layout_marginBottom="100dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="136dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:src="@drawable/appbar_logo" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:background="@drawable/bg_rounded"
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/nav_host_fragment_activity_bottom_nav"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/mobile_navigation" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:contentDescription="@string/app_name"
-        android:src="@drawable/scanit_logo_1"
-        app:layout_anchor="@id/bottomAppBar" />
+        android:scaleType="center"
+        android:src="@drawable/app_icon"
+        app:backgroundTint="@color/grey_300"
+        app:fabCustomSize="75dp"
+        app:layout_anchor="@id/bottomAppBar"
+        app:maxImageSize="54dp"
+        app:tint="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

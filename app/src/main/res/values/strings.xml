@@ -8,4 +8,39 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="assignment_list">Assignment List</string>
     <string name="attendance_list">Attendance List</string>
+    <string name="select_date_separator">Select date separator</string>
+    <string name="select_date_format">Select date format</string>
+    <string name="select_time_format">Select time format</string>
+    <string name="export">Export</string>
+    <string name="delete">Delete</string>
+
+    <string-array name="date_separator">
+        <item>-</item>
+        <item>/</item>
+        <item>.</item>
+    </string-array>
+
+    <string-array name="date_format0">
+        <item>Month-Day-Year</item>
+        <item>Day-Month-Year</item>
+        <item>Year-Month-Day</item>
+    </string-array>
+
+    <string-array name="date_format1">
+        <item>Month/Day/Year</item>
+        <item>Day/Month/Year</item>
+        <item>Year/Month/Day</item>
+    </string-array>
+
+    <string-array name="date_format2">
+        <item>Month.Day.Year</item>
+        <item>Day.Month.Year</item>
+        <item>Year.Month.Day</item>
+    </string-array>
+
+    <string-array name="time_format">
+        <item>12 hour</item>
+        <item>24 hour</item>
+    </string-array>
+
 </resources>

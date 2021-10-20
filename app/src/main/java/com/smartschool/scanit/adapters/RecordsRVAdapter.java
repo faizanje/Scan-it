@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.smartschool.scanit.Constants;
 import com.smartschool.scanit.databinding.ItemRecordLayoutBinding;
 import com.smartschool.scanit.models.Record;
+import com.smartschool.scanit.shared.Config;
+import com.smartschool.scanit.utils.DateTimeFormatUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class RecordsRVAdapter extends RecyclerView.Adapter<RecordsRVAdapter.MyViewHolder> {
@@ -39,10 +42,10 @@ public class RecordsRVAdapter extends RecyclerView.Adapter<RecordsRVAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         Record record = recordArrayList.get(holder.getAdapterPosition());
-        Log.d(Constants.TAG, "onBindViewHolder: " + record);
-        Log.d(Constants.TAG, "onBindViewHolder: ");
+//        Log.d(Constants.TAG, "onBindViewHolder: " + record);
+//        Log.d(Constants.TAG, "onBindViewHolder: ");
         holder.binding.tvName.setText(holder.getAdapterPosition() + 1 + ". " + record.getFullName());
-        holder.binding.tvTime.setText(record.getTime().toString());
+        holder.binding.tvTime.setText(DateTimeFormatUtils.getFormattedLocalDateTime(record.getTime()));
         holder.binding.tvRecordType.setText(record.getRecord_type().toString());
     }
 

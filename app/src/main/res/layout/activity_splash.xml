@@ -8,15 +8,15 @@
 
     <ImageView
         android:scaleType="centerCrop"
-        android:src="@drawable/splash_screen"
+        android:src="@drawable/splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageView
-        android:layout_centerInParent="true"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src="@drawable/scanit_logo"
-        />
+<!--    <ImageView-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="300dp"-->
+<!--        android:src="@drawable/scanit_logo"-->
+<!--        />-->
 
 </RelativeLayout>

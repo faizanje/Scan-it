@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/listRecordsFragment">
+    app:startDestination="@id/scanFragment">
     <fragment
         android:id="@+id/listRecordsFragment"
         android:name="com.smartschool.scanit.fragments.ListRecordsFragment"
@@ -22,4 +22,7 @@
     <action
         android:id="@+id/action_global_scanFragment"
         app:destination="@id/scanFragment" />
+
+    <action android:id="@+id/action_global_listRecordsFragment"
+        app:destination="@id/listRecordsFragment"/>
 </navigation>

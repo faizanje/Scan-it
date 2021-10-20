@@ -7,12 +7,30 @@
     android:orientation="vertical"
     android:padding="12dp">
 
+    <TextView
+        android:textSize="30sp"
+        android:textColor="@color/grey"
+        android:textStyle="bold"
+        android:text="Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        style="@style/MyDivider"
+        />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:layout_marginTop="10dp"
         android:id="@+id/switchAlarm"
         android:textSize="18sp"
         android:text="Alarm Sound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <View
+        style="@style/MyDivider"
+        android:layout_marginVertical="4dp"
+        />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchContinuousScanning"
@@ -21,7 +39,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <View
+        android:layout_marginVertical="4dp"
+        style="@style/MyDivider"
+        />
+
     <TextView
+        android:background="?selectableItemBackground"
         android:id="@+id/tvDateTimeFormat"
         android:paddingVertical="8dp"
         android:textColor="@color/black"

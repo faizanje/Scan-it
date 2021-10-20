@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:clipToPadding="false"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="15dp"
-    tools:context=".fragments.scan_tab.ScanForAttendanceFragment"
-    >
+    android:paddingHorizontal="30dp"
+    app:alignItems="center"
+    app:flexDirection="column"
+    app:flexWrap="nowrap"
+    app:justifyContent="center"
+    tools:context=".fragments.scan_tab.ScanForAttendanceFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan now!"
+        android:textColor="@color/grey"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="185dp"
+        android:src="@drawable/girl_presentation" />
 
     <com.google.android.material.button.MaterialButton
-        android:text="In"
         android:id="@+id/btnIn"
+        style="@style/MyButton.Large"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="In"
+        app:backgroundTint="@color/yellow_400" />
 
     <com.google.android.material.button.MaterialButton
-        android:text="Out"
         android:id="@+id/btnOut"
+        style="@style/MyButton.Large"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Out" />
 
-</LinearLayout>
+</com.google.android.flexbox.FlexboxLayout>

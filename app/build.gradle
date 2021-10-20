@@ -56,6 +56,11 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.1.0' /*Animations*/
     implementation 'net.sf.supercsv:super-csv:2.4.0'   /*Export to csv*/
     implementation "com.anggrayudi:storage:0.13.0"   /*Storage */
+    implementation 'com.github.hendrawd:StorageUtil:1.1.0'  /*Storage*/
+    implementation 'pub.devrel:easypermissions:3.0.0'      /*Permissions*/
+    implementation 'com.google.android.flexbox:flexbox:3.0.0' /*CSS LIKE FLEX*/
+    implementation 'com.github.florent37:expansionpanel:1.2.4'  /*Expansion panel*/
+
 
 
 
