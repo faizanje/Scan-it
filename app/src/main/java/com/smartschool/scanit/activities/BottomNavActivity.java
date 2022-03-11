@@ -1,9 +1,21 @@
 package com.smartschool.scanit.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +29,7 @@ import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
 import com.smartschool.scanit.R;
 import com.smartschool.scanit.databinding.ActivityBottomNavBinding;
+import com.smartschool.scanit.utils.SimUtil;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,11 +39,13 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import pub.devrel.easypermissions.PermissionRequest;
 
-public class BottomNavActivity extends AppCompatActivity{
+public class BottomNavActivity extends AppCompatActivity {
 
     private final int RC_STORAGE = 10;
-    private ActivityBottomNavBinding binding;
+    private final int RC_SMS = 11;
     NavController navController;
+    private ActivityBottomNavBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +66,8 @@ public class BottomNavActivity extends AppCompatActivity{
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_global_scanFragment);
+                checkSMSPermissions();
+
             }
         });
 
@@ -66,6 +82,20 @@ public class BottomNavActivity extends AppCompatActivity{
 
     }
 
+
+    public void sendSMS(String phoneNo, String msg) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo, null, msg, null, null);
+            Toast.makeText(getApplicationContext(), "Message Sent",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.getMessage(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
+        }
+    }
+
     private void setBottomNavRadius() {
 //        float radius = getResources().getDimension(R.dimen.cornerSize);
         float radius = 100;
@@ -73,7 +103,7 @@ public class BottomNavActivity extends AppCompatActivity{
         shapeDrawable.setShapeAppearanceModel(shapeDrawable
                 .getShapeAppearanceModel()
                 .toBuilder()
-                .setAllCorners(CornerFamily.ROUNDED,radius)
+                .setAllCorners(CornerFamily.ROUNDED, radius)
                 .build());
     }
 
@@ -92,8 +122,21 @@ public class BottomNavActivity extends AppCompatActivity{
             navController.navigate(R.id.action_global_listRecordsFragment);
         } else {
             // Do not have permissions, request them now
-            EasyPermissions.requestPermissions(this, "Storage permissions are required",
+            EasyPermissions.requestPermissions(this, "Storage permissions are required.",
                     RC_STORAGE, perms);
+        }
+    }
+
+
+    @AfterPermissionGranted(RC_SMS)
+    private void checkSMSPermissions() {
+        String[] perms = {Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            navController.navigate(R.id.action_global_scanFragment);
+        } else {
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, "Phone permissions are required to send SMS.",
+                    RC_SMS, perms);
         }
     }
 
