@@ -66,7 +66,8 @@ public class BottomNavActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkSMSPermissions();
+//                checkSMSPermissions();
+                navController.navigate(R.id.action_global_scanFragment);
 
             }
         });
@@ -80,6 +81,17 @@ public class BottomNavActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setBottomNavRadius() {
+//        float radius = getResources().getDimension(R.dimen.cornerSize);
+        float radius = 100;
+        MaterialShapeDrawable shapeDrawable = (MaterialShapeDrawable) binding.bottomAppBar.getBackground();
+        shapeDrawable.setShapeAppearanceModel(shapeDrawable
+                .getShapeAppearanceModel()
+                .toBuilder()
+                .setAllCorners(CornerFamily.ROUNDED, radius)
+                .build());
     }
 
 
@@ -96,16 +108,7 @@ public class BottomNavActivity extends AppCompatActivity {
         }
     }
 
-    private void setBottomNavRadius() {
-//        float radius = getResources().getDimension(R.dimen.cornerSize);
-        float radius = 100;
-        MaterialShapeDrawable shapeDrawable = (MaterialShapeDrawable) binding.bottomAppBar.getBackground();
-        shapeDrawable.setShapeAppearanceModel(shapeDrawable
-                .getShapeAppearanceModel()
-                .toBuilder()
-                .setAllCorners(CornerFamily.ROUNDED, radius)
-                .build());
-    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

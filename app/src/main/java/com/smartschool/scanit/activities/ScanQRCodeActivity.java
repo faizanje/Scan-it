@@ -19,6 +19,7 @@ import com.smartschool.scanit.databinding.ActivityScanQrcodeBinding;
 import com.smartschool.scanit.models.Record;
 import com.smartschool.scanit.shared.Config;
 import com.smartschool.scanit.utils.DBUtils;
+import com.smartschool.scanit.utils.SimUtil;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -49,33 +50,43 @@ public class ScanQRCodeActivity extends AppCompatActivity {
                     public void run() {
                         recordArrayListToSearch.clear();
                         recordArrayListToSearch.addAll(DBUtils.getRecordByRecordType(record_type));
-                        String fullName = result.getText();
-                        if (fullName != null) {
-                            Record record = new Record(fullName, LocalDateTime.now(), record_type);
-                            if (recordExists(record)) {
-                                Toast.makeText(ScanQRCodeActivity.this, "Record Already exists", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(ScanQRCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                                DBUtils.storeRecord(record);
-                            }
-                            if(Config.getInstance().isAlarmRingtone()){
-                                ringAlarmTone();
-                            }
-                            if (!Config.getInstance().isContinuousScanning()) {
-                                finish();
-                            }else {
-                                new Handler(Looper.getMainLooper())
-                                        .postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                mCodeScanner.startPreview();
-                                            }
-                                        },1500);
+                        String qrCode = result.getText();
+                        String[] array = qrCode.split("--");
+                        if (array.length == 2) {
+                            String number = array[1];
+                            String fullName = array[0];
+//                            SimUtil.sendDirectSMS(getApplicationContext(), number, String.format("Student %s.\nReason: %s", fullName, record_type.toString()));
+                            SimUtil.sendSMSLib(ScanQRCodeActivity.this, number, String.format("Student %s.\nReason: %s", fullName, record_type.toString()));
+                            if (fullName != null) {
+                                Record record = new Record(fullName, LocalDateTime.now(), record_type);
+                                if (recordExists(record)) {
+                                    Toast.makeText(ScanQRCodeActivity.this, "Record Already exists", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(ScanQRCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                                    DBUtils.storeRecord(record);
+                                }
+                                if (Config.getInstance().isAlarmRingtone()) {
+                                    ringAlarmTone();
+                                }
+                                if (!Config.getInstance().isContinuousScanning()) {
+//                                    finish();
+                                } else {
+                                    new Handler(Looper.getMainLooper())
+                                            .postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    mCodeScanner.startPreview();
+                                                }
+                                            }, 1500);
 
+                                }
+                            } else {
+                                Toast.makeText(ScanQRCodeActivity.this, "QR code doesn't contain a name", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(ScanQRCodeActivity.this, "QR code doesn't contain a name", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ScanQRCodeActivity.this, "QR Code is not in correct format", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
             }

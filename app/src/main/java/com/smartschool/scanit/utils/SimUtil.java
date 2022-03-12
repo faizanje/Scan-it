@@ -15,11 +15,15 @@ import android.telephony.SubscriptionManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.smartschool.scanit.Constants;
 import com.smartschool.scanit.activities.BottomNavActivity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+
+import ir.mtajik.android.advancedsmsmanager.SmsHandler;
+import ir.mtajik.android.advancedsmsmanager.model.MySmsManager;
 
 public class SimUtil {
 
@@ -87,17 +91,20 @@ public class SimUtil {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             SubscriptionManager localSubscriptionManager = SubscriptionManager.from(context);
-            if (localSubscriptionManager.getActiveSubscriptionInfoCount() > 1) {
+            if (localSubscriptionManager.getActiveSubscriptionInfoCount() > 0) {
                 List localList = localSubscriptionManager.getActiveSubscriptionInfoList();
 
                 SubscriptionInfo simInfo1 = (SubscriptionInfo) localList.get(0);
-                SubscriptionInfo simInfo2 = (SubscriptionInfo) localList.get(1);
+//                SubscriptionInfo simInfo2 = (SubscriptionInfo) localList.get(1);
+                Log.d(Constants.TAG, "sendDirectSMS: " + simInfo1);
+//                Log.d(Constants.TAG, "sendDirectSMS: " + simInfo2);
+//                Log.d(Constants.TAG, "sendDirectSMS: " + simInfo1.getCarrierName().toString());
 
                 //SendSMS From SIM One
                 SmsManager.getSmsManagerForSubscriptionId(simInfo1.getSubscriptionId()).sendTextMessage(to, null, message, sentPI, deliveredPI);
 
                 //SendSMS From SIM Two
-                SmsManager.getSmsManagerForSubscriptionId(simInfo2.getSubscriptionId()).sendTextMessage(to, null, message, sentPI, deliveredPI);
+//                SmsManager.getSmsManagerForSubscriptionId(simInfo2.getSubscriptionId()).sendTextMessage(to, null, message, sentPI, deliveredPI);
             }
         } else {
             SmsManager.getDefault().sendTextMessage(to, null, message, sentPI, deliveredPI);
@@ -146,6 +153,40 @@ public class SimUtil {
             Log.e("Exception", "Exception:" + e);
         }
         return false;
+    }
+
+    public static void sendSMSLib(Context context, String to, String message) {
+        SmsHandler.builder(context, "+" + to)
+//                .withCarrierNameFilter("MCI")
+//                .withCustomDialogForSendSms(R.layout.my_sms_dialog)
+//                .withCustomDialogForChoseSim(R.layout.simcard_choosing_dialog)
+//                .needToShowSendSmsDialog(false)
+                .build().sendSms("Send SMS", message, new MySmsManager.SMSManagerCallBack() {
+            @Override
+            public void afterSuccessfulSMS(int smsId) {
+                Log.d(Constants.TAG, "afterSuccessfulSMS: " + smsId);
+                Toast.makeText(context, "afterSuccessfulSMS", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void afterDelivered(int smsId) {
+                Log.d(Constants.TAG, "afterDelivered: " + smsId);
+                Toast.makeText(context, "afterDelivered", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void afterUnSuccessfulSMS(int smsId, String message) {
+                Log.d(Constants.TAG, "afterUnSuccessfulSMS: ");
+                Toast.makeText(context, "afterUnSuccessfulSMS", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCarrierNameNotMatch(int smsId, String message) {
+                Log.d(Constants.TAG, "onCarrierNameNotMatch: ");
+                Toast.makeText(context, "onCarrierNameNotMatch", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 }
