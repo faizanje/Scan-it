@@ -55,13 +55,16 @@ public class ScanQRCodeActivity extends AppCompatActivity {
                         if (array.length == 2) {
                             String number = array[1];
                             String fullName = array[0];
-//                            SimUtil.sendDirectSMS(getApplicationContext(), number, String.format("Student %s.\nReason: %s", fullName, record_type.toString()));
-                            SimUtil.sendSMSLib(ScanQRCodeActivity.this, number, String.format("Student %s.\nReason: %s", fullName, record_type.toString()));
+//                            SimUtil.sendSMSLib(ScanQRCodeActivity.this, number, String.format("Student %s.\nReason: %s", fullName, record_type.toString()));
                             if (fullName != null) {
                                 Record record = new Record(fullName, LocalDateTime.now(), record_type);
                                 if (recordExists(record)) {
                                     Toast.makeText(ScanQRCodeActivity.this, "Record Already exists", Toast.LENGTH_SHORT).show();
                                 } else {
+                                    if (shouldSendSMS()) {
+                                        String message = getSMSText(fullName);
+                                        SimUtil.sendDirectSMS(getApplicationContext(), "+" + number, message);
+                                    }
                                     Toast.makeText(ScanQRCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
                                     DBUtils.storeRecord(record);
                                 }
@@ -69,7 +72,7 @@ public class ScanQRCodeActivity extends AppCompatActivity {
                                     ringAlarmTone();
                                 }
                                 if (!Config.getInstance().isContinuousScanning()) {
-//                                    finish();
+                                    finish();
                                 } else {
                                     new Handler(Looper.getMainLooper())
                                             .postDelayed(new Runnable() {
@@ -91,6 +94,32 @@ public class ScanQRCodeActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private boolean shouldSendSMS() {
+        switch (record_type) {
+            case In:
+            case Out:
+                return true;
+            case Get:
+            case Pass:
+                return false;
+        }
+        return false;
+    }
+
+    private String getSMSText(String fullName) {
+        String message = "%s just %s the school";
+        String reason = "";
+        switch (record_type) {
+            case In:
+                reason = "entered";
+                break;
+            case Out:
+                reason = "left";
+                break;
+        }
+        return String.format(message, fullName, reason);
     }
 
     private void ringAlarmTone() {
