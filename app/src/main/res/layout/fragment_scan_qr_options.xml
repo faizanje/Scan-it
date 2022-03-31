@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ScanQROptionFragment">
 
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:src="@drawable/bg_rounded" />-->
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:src="@drawable/bg_rounded" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,29 +18,29 @@
 
 
         <com.google.android.material.tabs.TabLayout
-            android:clipToPadding="false"
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_margin="20dp"
             android:background="@drawable/bg_rounded"
             android:backgroundTint="@color/white"
+            android:clipToPadding="false"
             app:tabIndicator="@drawable/bg_rounded_outline"
             app:tabIndicatorColor="@null"
             app:tabIndicatorFullWidth="true"
-            app:tabRippleColor="@null"
             app:tabIndicatorGravity="center"
             app:tabIndicatorHeight="60dp"
+            app:tabRippleColor="@null"
             app:tabSelectedTextColor="@color/black" />
 
         <RelativeLayout
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="25dp"
-            android:clipToPadding="false"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/bg_rounded"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_rounded"
+            android:backgroundTint="@color/white"
+            android:clipToPadding="false">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"

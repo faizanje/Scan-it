@@ -109,7 +109,6 @@ public class BottomNavActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -135,7 +134,7 @@ public class BottomNavActivity extends AppCompatActivity {
     private void checkSMSPermissions() {
         String[] perms = {Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE};
         if (EasyPermissions.hasPermissions(this, perms)) {
-            navController.navigate(R.id.action_global_scanFragment);
+            navController.navigate(R.id.action_global_homeFragment);
         } else {
             // Do not have permissions, request them now
             EasyPermissions.requestPermissions(this, "Phone permissions are required to send SMS.",
