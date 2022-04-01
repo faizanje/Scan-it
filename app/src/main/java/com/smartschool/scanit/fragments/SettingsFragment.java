@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.smartschool.scanit.R;
 
 import com.smartschool.scanit.databinding.FragmentSettingsBinding;
 import com.smartschool.scanit.shared.Config;
+import com.suke.widget.SwitchButton;
 
 public class SettingsFragment extends Fragment {
 
@@ -22,7 +24,6 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         binding = FragmentSettingsBinding.inflate(getLayoutInflater());
         init();
         setListeners();
@@ -30,20 +31,33 @@ public class SettingsFragment extends Fragment {
     }
 
     private void setListeners() {
-        binding.switchContinuousScanning.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.switchContinuousScanning.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Config.getInstance().setContinuousScanning(b);
+            public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                //TODO do your job
+
+                Config.getInstance().setContinuousScanning(isChecked);
             }
         });
-
-        binding.switchAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//        binding.switchContinuousScanning.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                Config.getInstance().setContinuousScanning(b);
+//            }
+//        });
+        binding.switchAlarm.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Config.getInstance().setAlarmRingtone(b);
+            public void onCheckedChanged(SwitchButton view, boolean isChecked) {
+                //TODO do your job
+                Config.getInstance().setAlarmRingtone(isChecked);
             }
         });
-
+//        binding.switchAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                Config.getInstance().setAlarmRingtone(b);
+//            }
+//        });
         binding.tvDateTimeFormat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

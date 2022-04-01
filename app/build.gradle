@@ -65,6 +65,7 @@ dependencies {
     implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
 
     implementation 'ir.mtajik.android:advancedsmsmanager:1.1.0'
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
 
 
 

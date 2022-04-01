@@ -29,6 +29,7 @@ import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
 import com.smartschool.scanit.R;
 import com.smartschool.scanit.databinding.ActivityBottomNavBinding;
+import com.smartschool.scanit.fragments.HomeFragment;
 import com.smartschool.scanit.utils.SimUtil;
 
 import org.jetbrains.annotations.NotNull;
@@ -44,17 +45,24 @@ public class BottomNavActivity extends AppCompatActivity {
     private final int RC_STORAGE = 10;
     private final int RC_SMS = 11;
     NavController navController;
+    public boolean icClicked=false;
     private ActivityBottomNavBinding binding;
+    MenuItem item ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityBottomNavBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
         setBottomNavRadius();
+        item=binding.navView.getMenu().findItem(R.id.listRecordsFragment);
 
         binding.navView.setItemIconTintList(null);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 //        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -67,16 +75,52 @@ public class BottomNavActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                checkSMSPermissions();
-                navController.navigate(R.id.action_global_scanFragment);
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("colValue", 2);
+//                HomeFragment fragment = new HomeFragment();
+//                fragment.setArguments(bundle);
+                item.setIcon(R.drawable.group_138);
+
+                navController.navigate(R.id.homeFragment);
+//                navController.navigate(R.id.homeFragment);
 
             }
         });
-
-        MenuItem item = binding.navView.getMenu().findItem(R.id.listRecordsFragment);
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+
+                if(icClicked==false){
+                    item.setIcon(R.drawable.group_138);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("colValue", 2);
+                    HomeFragment fragment = new HomeFragment();
+                    fragment.setArguments(bundle);
+                    navController.navigate(R.id.homeFragment,bundle);
+                    icClicked=true;
+
+                }
+
+                else if(icClicked==true){
+                    item.setIcon(R.drawable.red_138);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("colValue", 1);
+                    HomeFragment fragment = new HomeFragment();
+                    fragment.setArguments(bundle);
+                    navController.navigate(R.id.homeFragment,bundle);
+
+                    icClicked=false;
+
+                }
+
+//                item.getIcon().setTint(getApplication().getResources().getColor(R.color.grey_300));
+
+
+
+
+//                navController.navigate(R.id.homeFragment);
                 checkStoragePermission();
+
                 return true;
             }
         });

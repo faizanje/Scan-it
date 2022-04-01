@@ -33,5 +33,58 @@
         android:id="@+id/homeFragment"
         android:name="com.smartschool.scanit.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_traceFragment"
+            app:destination="@id/traceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_attendanceFragment"
+            app:destination="@id/attendanceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_healthFragment"
+            app:destination="@id/healthFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_academicFragment"
+            app:destination="@id/academicFragment" />
+        <argument
+            android:name="myArg"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
+    <fragment
+        android:id="@+id/traceFragment"
+        android:name="com.smartschool.scanit.fragments.fragment_trace.TraceFragment"
+        android:label="fragment_trace"
+        tools:layout="@layout/fragment_trace" >
+        <action
+            android:id="@+id/action_traceFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.smartschool.scanit.fragments.fragment_attendance.AttendanceFragment"
+        android:label="fragment_attendance"
+        tools:layout="@layout/fragment_attendance" >
+        <action
+            android:id="@+id/action_attendanceFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="com.smartschool.scanit.fragments.fragment_health.HealthFragment"
+        android:label="fragment_health"
+        tools:layout="@layout/fragment_health" >
+        <action
+            android:id="@+id/action_healthFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/academicFragment"
+        android:name="com.smartschool.scanit.fragments.fragment_academic.AcademicFragment"
+        android:label="fragment_academic"
+        tools:layout="@layout/fragment_academic" >
+        <action
+            android:id="@+id/action_academicFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

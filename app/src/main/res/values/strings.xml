@@ -13,6 +13,10 @@
     <string name="select_time_format">Select time format</string>
     <string name="export">Export</string>
     <string name="delete">Delete</string>
+    <string name="everything_you_need_is_here_now">Everything you need is here now!</string>
+    <string name="what_do_you_want_to_scan_for">What do you want to scan for?</string>
+    <string name="example_name">Example Name</string>
+    <string name="time">09.15.2021\n09:30am</string>
 
     <string-array name="date_separator">
         <item>-</item>
