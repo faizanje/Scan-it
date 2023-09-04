@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SettingsFragment"
     android:orientation="vertical"
     android:padding="12dp">
@@ -19,26 +20,125 @@
         style="@style/MyDivider"
         />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_marginTop="10dp"
-        android:id="@+id/switchAlarm"
-        android:textSize="18sp"
-        android:text="Alarm Sound"
+    <RelativeLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingVertical="15dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="Alarm Sound"
+            android:textColor="@color/light_grey"
+
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switchAlarm"
+            android:layout_width="wrap_content"
+            app:sb_uncheck_color="@color/light_grey"
+            app:sb_checked="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            app:sb_background="@color/light_grey"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+<!--    <com.google.android.material.switchmaterial.SwitchMaterial-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:id="@+id/switchAlarm"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Alarm Sound"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
 
     <View
         style="@style/MyDivider"
         android:layout_marginVertical="4dp"
         />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switchContinuousScanning"
-        android:textSize="18sp"
-        android:text="Continuous Scanning"
+<!--    <com.google.android.material.switchmaterial.SwitchMaterial-->
+<!--        android:id="@+id/switchContinuousScanning"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Continuous Scanning"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingVertical="15dp"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="Continuous Scanning"
+            android:textColor="@color/light_grey"
+
+
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switchContinuousScanning"
+            android:layout_width="wrap_content"
+            app:sb_uncheck_color="@color/light_grey"
+            app:sb_checked="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            app:sb_background="@color/light_grey"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+
+    <View
+        android:layout_marginVertical="4dp"
+        style="@style/MyDivider"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingVertical="15dp"
+
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="Send SMS"
+            android:textColor="@color/light_grey"
+
+
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/swithSMS"
+            android:layout_width="wrap_content"
+            app:sb_uncheck_color="@color/light_grey"
+            app:sb_checked="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            app:sb_background="@color/light_grey"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
     <View
         android:layout_marginVertical="4dp"
         style="@style/MyDivider"
@@ -48,9 +148,28 @@
         android:background="?selectableItemBackground"
         android:id="@+id/tvDateTimeFormat"
         android:paddingVertical="8dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/light_grey"
+        android:textSize="20sp"
         android:text="Date &amp; time format"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_extra_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+<!--    <com.suke.widget.SwitchButton-->
+<!--        android:id="@+id/switch_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        app:sb_uncheck_color="@color/light_grey"-->
+<!--        app:sb_checked="false" -->
+<!--        app:sb_background="@color/light_grey"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <ImageView
+        android:layout_width="116dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|bottom"
+
+        android:src="@drawable/logo"
+
+        />
 </LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_gravity="center"
+android:clipToPadding="false"
+android:gravity="center"
+android:orientation="vertical"
+android:paddingHorizontal="30dp"
+app:alignItems="center"
+app:flexDirection="column"
+app:flexWrap="nowrap"
+app:justifyContent="center"
+tools:context=".fragments.fragment_health.tabs.HealthScanForFragment">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Payment"
+    android:textColor="@color/grey"
+    android:textSize="40sp"
+    android:textStyle="bold" />
+
+<ImageView
+    android:layout_width="240dp"
+    android:layout_height="195dp"
+    android:scaleType="fitCenter"
+    android:src="@drawable/health" />
+
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/btnIn"
+    style="@style/MyButton.Large"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="In"
+    android:textColor="@color/white"
+    android:textStyle="bold"
+    app:cornerRadius="100dp"
+    android:padding="16dp"
+    app:backgroundTint="@color/purple" />
+
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/btnOut"
+    style="@style/MyButton.disable"
+    android:padding="16dp"
+    app:strokeWidth="4dp"
+    app:cornerRadius="100dp"
+    app:strokeColor="@color/purple"
+    android:textColor="@color/purple"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="Out" />
+
+
+</com.google.android.flexbox.FlexboxLayout>

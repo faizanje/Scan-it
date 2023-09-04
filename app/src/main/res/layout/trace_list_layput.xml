@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    android:gravity="center"
+
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1."
+        android:id="@+id/tvIndex"
+        android:textColor="@color/grey"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppins_regular"
+        />
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tvIndex"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_bold"
+        android:maxLength="20"
+        android:text="@string/example_name"
+        android:textColor="@color/grey"
+        android:textSize="15sp"
+
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/time"
+        android:textSize="12sp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:layout_alignParentRight="true"
+        android:id="@+id/tvStatus"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
+        />
+<View
+    android:layout_width="wrap_content"
+    android:layout_height="1dp"
+    android:layout_below="@id/tvTime"
+    android:background="@color/grey_300"
+    android:layout_marginTop="5dp"
+    />
+
+
+
+
+</RelativeLayout>

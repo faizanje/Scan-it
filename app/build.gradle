@@ -61,6 +61,12 @@ dependencies {
     implementation 'com.google.android.flexbox:flexbox:3.0.0' /*CSS LIKE FLEX*/
     implementation 'com.github.florent37:expansionpanel:1.2.4'  /*Expansion panel*/
 
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.1"
+    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
+
+    implementation 'ir.mtajik.android:advancedsmsmanager:1.1.0'
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+
 
 
 

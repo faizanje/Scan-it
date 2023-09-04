@@ -18,30 +18,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scan now!"
+        android:text="Attendance"
         android:textColor="@color/grey"
         android:textSize="40sp"
         android:textStyle="bold" />
 
     <ImageView
         android:layout_width="240dp"
-        android:layout_height="185dp"
-        android:src="@drawable/girl_presentation" />
+        android:layout_height="195dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/attendance_img" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnIn"
         style="@style/MyButton.Large"
+        app:strokeWidth="4dp"
+        app:strokeColor="@color/yellow_400"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="In"
+        android:text="Present"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="100dp"
+        android:padding="16dp"
         app:backgroundTint="@color/yellow_400" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOut"
-        style="@style/MyButton.Large"
+        style="@style/MyButton.disable"
+        android:padding="16dp"
+        app:strokeWidth="4dp"
+        app:cornerRadius="100dp"
+        app:strokeColor="@color/yellow_400"
+        android:textColor="@color/yellow_400"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Out" />
+        android:text="Absent" />
+
 
 </com.google.android.flexbox.FlexboxLayout>

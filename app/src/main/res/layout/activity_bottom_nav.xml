@@ -80,11 +80,11 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
-        android:src="@drawable/app_icon"
+        android:src="@drawable/icon"
         app:backgroundTint="@color/grey_300"
         app:fabCustomSize="75dp"
         app:layout_anchor="@id/bottomAppBar"
-        app:maxImageSize="54dp"
+        app:maxImageSize="45dp"
         app:tint="@null" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
